@@ -1,12 +1,9 @@
 export interface Product {
-  id: string;
-  category: Category;
+  id: number;
   name: string;
   price: string;
-  isFeatured: boolean;
-  size: Size;
-  color: Color;
-  images: Image[]
+  is_featured: boolean;
+  image: string;
 };
 
 export interface Image {

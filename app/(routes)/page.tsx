@@ -1,11 +1,12 @@
-import getProducts from "@/actions/get-products";
+import { getProducts } from "@/actions/get-products";
 import ProductList from "@/components/product-list";
 import Container from "@/components/ui/container";
 
 export const revalidate = 0;
 
 const HomePage = async () => {
-  const products = await getProducts({ isFeatured: true });
+  //const products = await getProducts({ isFeatured: true });
+  const products = await getProducts();
 
   return (
     <Container>

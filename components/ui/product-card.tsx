@@ -35,7 +35,7 @@ const ProductCard: React.FC<ProductCard> = ({
    
       <div className="aspect-square rounded-xl bg-gray-100 relative">
         <Image 
-          src={data.images?.[0]?.url} 
+          src={data.image} 
           alt="" 
           fill
           className="aspect-square object-cover rounded-md"
@@ -52,7 +52,7 @@ const ProductCard: React.FC<ProductCard> = ({
   
       <div>
         <p className="font-semibold text-lg">{data.name}</p>
-        <p className="text-sm text-gray-500">{data.category?.name}</p>
+        {/*<p className="text-sm text-gray-500">{data.category?.name}</p>*/}
       </div>
   
       <div className="flex items-center justify-between">
