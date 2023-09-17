@@ -53,11 +53,11 @@ const Summary = ({ userId }: CartClientProps) => {
         return toast.error('Error creating the order.');
       }
 
-      const orderId = orderData as unknown as Orders;
+      const orderId = orderData as unknown as Orders[];
 
       if (orderId != null) { 
           items.map(async (cartItem) => {
-            const { data, error } = await supabase
+            const { data: orderItem, error } = await supabase
               .from('order_to_item')
               .insert({
                   order_id: orderId[0].id,
@@ -65,7 +65,7 @@ const Summary = ({ userId }: CartClientProps) => {
                   price: cartItem.price
                 })
 
-            return { data, error };
+            return { orderItem, error };
           })
       }
 
