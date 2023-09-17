@@ -7,7 +7,7 @@ const getCategory = async (id: string): Promise<Category> => {
 
   return (
       {
-        id: "1",
+        id: "2",
         name: "Roupas"
       }
   );

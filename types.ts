@@ -4,6 +4,7 @@ export interface Product {
   price: string;
   is_featured: boolean;
   image: string;
+  categories: Category;
 };
 
 export interface Image {
@@ -14,16 +15,4 @@ export interface Image {
 export interface Category {
   id: string;
   name: string;
-};
-
-export interface Size {
-  id: string;
-  name: string;
-  value: string;
-};
-
-export interface Color {
-  id: string;
-  name: string;
-  value: string;
 };

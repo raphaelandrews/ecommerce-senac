@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { MouseEventHandler } from "react";
-import { Expand, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import Currency  from "@/components/ui/currency";
@@ -33,7 +33,7 @@ const ProductCard: React.FC<ProductCard> = ({
   return ( 
     <div onClick={handleClick} className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
    
-      <div className="aspect-square rounded-xl bg-gray-100 relative">
+      <div className="aspect-[1/1.5] rounded-xl bg-gray-100 relative">
         <Image 
           src={data.image} 
           alt="" 
@@ -52,7 +52,7 @@ const ProductCard: React.FC<ProductCard> = ({
   
       <div>
         <p className="font-semibold text-lg">{data.name}</p>
-        {/*<p className="text-sm text-gray-500">{data.category?.name}</p>*/}
+        <p className="text-sm text-gray-500">{data.categories.name}</p>
       </div>
   
       <div className="flex items-center justify-between">

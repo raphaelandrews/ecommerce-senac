@@ -1,11 +1,13 @@
+'use client'
+
+import React, { useEffect, useState } from 'react';
+import { Product, Category } from "@/types";
 import Container from '@/components/ui/container';
 import ProductCard from '@/components/ui/product-card';
 import NoResults from '@/components/ui/no-results';
 
-import getProducts from "@/actions/get-products";
+import { getProductsByCategory } from "@/actions/get-products-by-category";
 import getCategory from '@/actions/get-category';
-
-import Filter from './components/filter';
 
 export const revalidate = 0;
 
@@ -15,13 +17,26 @@ interface CategoryPageProps {
   },
 }
 
-const CategoryPage: React.FC<CategoryPageProps> = async ({ 
-  params
-}) => {
-  const products = await getProducts({ 
-    categoryId: params.categoryId,
-  });
-  const category = await getCategory(params.categoryId);
+const CategoryPage: React.FC<CategoryPageProps> = ({ params }) => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [category, setCategory] = useState<Category | null>(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const productsData = await getProductsByCategory({
+          categoryId: params.categoryId,
+        });
+        const categoryData = await getCategory(params.categoryId);
+        setProducts(productsData);
+        setCategory(categoryData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    fetchData();
+  }, [params.categoryId]);
 
   return (
     <div className="bg-white">
@@ -29,7 +44,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
         <div className="px-4 sm:px-6 lg:px-8 pb-24">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
             <div className="hidden lg:block">
-              
+              {/* Conteúdo relacionado à categoria, se necessário */}
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">
               {products.length === 0 && <NoResults />}
