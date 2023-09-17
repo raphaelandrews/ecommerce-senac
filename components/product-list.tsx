@@ -3,7 +3,7 @@ import { Product } from "@/types";
 import NoResults from "@/components/ui/no-results";
 
 interface ProductListProps {
-  title: string;
+  title: string | undefined;
   items: Product[]
 }
 

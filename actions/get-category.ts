@@ -1,16 +1,26 @@
+import { supabaseClient } from '@/utils/supabaseClient';
 import { Category } from "@/types";
 
-const URL = `${process.env.NEXT_PUBLIC_API_URL}/categories`;
+interface Query {
+  categoryId?: string;
+}
 
-const getCategory = async (id: string): Promise<Category> => {
-  //const res = await fetch(`${URL}/${id}`);
+export const getCategory = async (query: Query) => {
+  const supabase = supabaseClient();
 
-  return (
-      {
-        id: "2",
-        name: "Roupas"
-      }
-  );
-};
+  const { categoryId } = query;
 
-export default getCategory;
+  const { data, error } = await supabase
+    .from('categories')
+    .select('*')
+    .eq('id', categoryId);
+  if (error) {
+    console.error('Error fetching category:', error);
+  }
+
+  if (data) {
+    return data[0];
+  } else {
+    return [];
+  }
+}
