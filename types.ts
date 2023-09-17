@@ -21,3 +21,8 @@ export interface Orders {
   id: string;
   user_id: string;
 }
+export interface OrderToItem {
+  order_id: string;
+  product_id: number;
+  price: string;
+}

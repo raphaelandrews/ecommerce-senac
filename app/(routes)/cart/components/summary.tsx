@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { toast } from "react-hot-toast";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { supabaseClientAuth } from '@/utils/supabaseClient';
 import { useAuth } from '@clerk/clerk-react';
 
@@ -20,7 +20,8 @@ const Summary = ({ userId }: CartClientProps) => {
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
   const { getToken } = useAuth();
-
+  const router = useRouter();
+  
   useEffect(() => {
     if (searchParams.get('success')) {
       toast.success('Payment completed.');
@@ -70,6 +71,8 @@ const Summary = ({ userId }: CartClientProps) => {
       }
 
       toast.success('Order placed successfully.');
+      removeAll();
+      router.push("/orders");
     } catch (e) {
       console.error(e);
       toast.error('An unexpected error occurred.');
