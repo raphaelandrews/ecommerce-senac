@@ -1,4 +1,3 @@
-
 import { createClient } from '@supabase/supabase-js'
 
 export const supabaseClientAuth = async (supabaseToken) => {
