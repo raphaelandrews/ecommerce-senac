@@ -16,3 +16,8 @@ export interface Category {
   id: string;
   name: string;
 };
+
+export interface Orders {
+  id: string;
+  user_id: string;
+}
