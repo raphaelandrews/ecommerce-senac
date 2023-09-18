@@ -7,7 +7,7 @@ Desenvolvimento de Sistema Web Modularizável
 - André Veras Chinaldillo </br>
 
 ## Run
-Clone
+### Clone
 
 ```bash
 git clone https://github.com/raphaelandrews/ecommerce-senac.git
@@ -18,7 +18,8 @@ Setup Supabase e Clerck - .env.example
 pnpm dev
 ```
 
-Ou vá para [Deploy](https://ecommerce-senac.vercel.app)
+### Produção
+[Deploy link](https://ecommerce-senac.vercel.app)
 
 ## Funcionamento
 **Link Youtube**: [Next.js](https://youtu.be/I5kdoESKtHg)
