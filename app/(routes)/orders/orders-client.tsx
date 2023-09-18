@@ -42,7 +42,7 @@ const OrdersClient = ({ userId }: OrdersClientProps) => {
                                 <CardTitle className="text-base">OrderId: {order.id}</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                {order.OrderId.map((items: { product_id: { name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode | null | undefined; }; price: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode | null | undefined; }, index: number) => (
+                                {order.OrderId.map((items: any, index: number) => (
                                     <div key={index + 1}>
                                         <p>{items.product_id.name}</p>
                                         <p>{items.price}</p>

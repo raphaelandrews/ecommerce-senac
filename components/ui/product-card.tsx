@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { MouseEventHandler } from "react";
 import { ShoppingCart } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 import Currency  from "@/components/ui/currency";
 import IconButton  from "@/components/ui/icon-button";
@@ -18,11 +17,6 @@ const ProductCard: React.FC<ProductCard> = ({
   data
 }) => {
   const cart = useCart();
-  const router = useRouter();
-
-  const handleClick = () => {
-    router.push(`/product/${data?.id}`);
-  };
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
@@ -31,8 +25,7 @@ const ProductCard: React.FC<ProductCard> = ({
   };
   
   return ( 
-    <div onClick={handleClick} className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
-   
+    <div className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
       <div className="aspect-[1/1.5] rounded-xl bg-gray-100 relative">
         <Image 
           src={data.image} 
